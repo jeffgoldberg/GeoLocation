@@ -48,7 +48,9 @@ $ipaddr_name = "San Diego";
     $coordinates = get_geolocation($ipaddr);
 
  
-//  print_r($coordinates);  //sample object   loc=lat,long  returned for IP address
+//  print_r($coordinates); 
+ 
+//sample object   loc=lat,long  returned for IP address
 // stdClass Object ( [ip] => 72.192.130.116 [hostname] => ip72-192-130-116.sd.sd.cox.net [city] => San Diego [region] =>
 //  California [country] => US [loc] => 32.7191,-117.1607 [org] => AS22773 Cox Communications Inc. [postal] => 92101 ) 
 
@@ -77,21 +79,25 @@ echo "<br />";
     $dist_to_server2 = distance($ulat,$ulong,$server2_lat,$server2_long);
     $dist_to_server3 = distance($ulat,$ulong,$server3_lat,$server3_long);
 
-echo "IP ADDRESS SOURCE:".$ipaddr_name."<br />";   
-echo "DISTANCE TO AMERICAS:".$dist_to_server1."<br />";
-echo "DISTANCE TO ASIA:".$dist_to_server2."<br />";
-echo "DISTANCE TO EUROPE:".$dist_to_server3."<br /><br />"; 
+echo "IP ADDRESS:  ".$ipaddr."<br />";
+echo "IP ADDRESS SOURCE:  ".$ipaddr_name."<br /><br />";
+echo "DISTANCE TO AMERICAS:  ".$dist_to_server1."<br />";
+echo "DISTANCE TO ASIA:  ".$dist_to_server2."<br />";
+echo "DISTANCE TO EUROPE:  ".$dist_to_server3."<br /><br />"; 
 //determine closest mirror server  
     $min_dist = min($dist_to_server1, $dist_to_server2, $dist_to_server3);
     switch ($min_dist) {
     case $dist_to_server1:
         $winner = $server1_name;
+        $winner_IP = $server1;
         break;
     case $dist_to_server2:
         $winner = $server2_name;
+        $winner_IP = $server2;
         break;
     case $dist_to_server3:
         $winner = $server3_name;
+        $winner_IP = $server3;
         break;
 } 
 /*another approach
@@ -103,7 +109,9 @@ echo "DISTANCE TO EUROPE:".$dist_to_server3."<br /><br />";
         }
     }elseif ($
 */
-echo "CLOSEST SERVER (forward traffic to): ".$winner;
+echo "CLOSEST SERVER :<br /><br />"."Mirror Server:  ........  ".$winner;
+echo "<br />";
+echo "IP:  ...........................  ".$winner_IP;
 
 
 //function gets location info re: IP address
