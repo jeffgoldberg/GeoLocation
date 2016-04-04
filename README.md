@@ -1,6 +1,8 @@
 # GeoLocation
 Locate closest proximity based upon IP address
 
+Sample output:
+
 IP ADDRESS: 72.192.130.116
 IP ADDRESS SOURCE: San Diego
 
